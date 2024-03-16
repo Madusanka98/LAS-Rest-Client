@@ -481,7 +481,7 @@
           
           if(parsedUserData.userType == 3){
               
-              document.getElementById("appointmentPrescription").style.display = 'none';
+              //document.getElementById("appointmentPrescription").style.display = 'none';
               document.getElementById("technician").classList.add('hidden');
               document.getElementById("appointmentReport").classList.add('hidden');
           }
