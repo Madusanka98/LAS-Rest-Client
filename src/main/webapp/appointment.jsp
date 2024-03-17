@@ -233,7 +233,11 @@
                                         <div class="form-group col-md-6">
                                             <div>
                                                 <label class="lbl" for="age">Preferred Time:</label>
-                                                <input class="form-control" type="text" name="" id="preferredTime" required>
+                                                <!--<input class="form-control" type="text" name="" id="preferredTime" required>-->
+                                                <select class="form-control" id="timeSlotsDropdown">
+                                                    <!-- Dropdown options will be populated here -->
+                                                  </select>
+                                                <span style="display: none" id="selectedTimeSlot"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -707,6 +711,42 @@
             }
     });
     
+    document.addEventListener("DOMContentLoaded", function() {
+        var dropdown = document.getElementById("timeSlotsDropdown");
+        var selectedTimeSlotDisplay = document.getElementById("selectedTimeSlot");
+
+        // Populate the dropdown with time slots
+        var startTime = 8; // Start time in 24-hour format (8 am)
+        var endTime = 18; // End time in 24-hour format (6 pm)
+
+        for (var hour = startTime; hour < endTime; hour++) {
+          for (var minute = 0; minute < 60; minute += 30) {
+            var am_pm = hour < 12 ? "am" : "pm";
+            var displayHour = (hour % 12 === 0) ? 12 : hour % 12;
+            var displayMinute = minute === 0 ? "00" : minute;
+            var timeSlot = displayHour + "." + displayMinute + " " + am_pm + " - ";
+
+            var nextHour = hour + Math.floor((minute + 30) / 60);
+            var nextMinute = (minute + 30) % 60;
+            var next_am_pm = nextHour < 12 ? "am" : "pm";
+            var nextDisplayHour = (nextHour % 12 === 0) ? 12 : nextHour % 12;
+            var nextDisplayMinute = nextMinute === 0 ? "00" : nextMinute;
+            timeSlot += nextDisplayHour + "." + nextDisplayMinute + " " + next_am_pm;
+
+            var option = document.createElement("option");
+            option.text = timeSlot;
+            option.value = timeSlot;
+            dropdown.add(option);
+          }
+        }
+
+        // Event listener to get the selected value
+        dropdown.addEventListener("change", function() {
+          var selectedValue = dropdown.value;
+          selectedTimeSlotDisplay.textContent = selectedValue;
+        });
+      });
+    
     const url3 = "http://localhost:8080/LAS-Rest-Service/resources/login/";
       //getPrefixData();
       /*$(document).ready(function() {
@@ -945,7 +985,7 @@
                         const person ={
                             "id" : id,
                             "preferredDate" : date,
-                            "preferredTime" : document.getElementById("preferredTime").value,
+                            "preferredTime" : dropdown.value,
                             "appointmentType" :  document.getElementById("testingTypes").value,
                             "referredDoctor" : document.getElementById("referredDoctor").value,
                             "appointmentReason" : document.getElementById("appointmentReason").value,
@@ -983,10 +1023,12 @@
                                 alert('Payment Successful!');
                                 var pDate = document.getElementById("preferredDate").value;
                                 var date = moment(pDate).format('MMM DD, YYYY');
+                                debugger; 
                                 const person ={
+                                      
                                     //"id" : document.getElementById("id").value,
                                     "preferredDate" : date,
-                                    "preferredTime" : document.getElementById("preferredTime").value,
+                                    "preferredTime" : document.getElementById("selectedTimeSlot").value,
                                     "appointmentType" :  document.getElementById("testingTypes").value,
                                     "referredDoctor" : document.getElementById("referredDoctor").value,
                                     "appointmentReason" : document.getElementById("appointmentReason").value,
@@ -1219,6 +1261,7 @@
 
             return new Blob([byteArray], { type: contentType });
         } 
+        
          </script>
 </body>
 </html>
