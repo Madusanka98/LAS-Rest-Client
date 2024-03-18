@@ -162,6 +162,7 @@
             </ul>
         </nav>  
         <div class="content w-full">
+            <h2 class="text-center mt-4">Appointment Report</h2>
             <div  class="form-group" style="padding: 20px;">
                 <div class="row">
                     <div class="form-group col-md-6">
@@ -189,7 +190,7 @@
                 </center>
             </div>
             <section class="p-3">
-                <div style="overflow-x: auto; padding-bottom: 30px;" class="table table-responsive-md">
+                <div style="padding-top: 25px;overflow-x: auto;padding-bottom: 30px;" class="table table-responsive-md">
                     <table class="table table-striped table-hover mt-3 text-center table-bordered" style="border-collapse: collapse;" id="example">
                         <thead>
                             <tr>

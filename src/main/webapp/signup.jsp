@@ -223,6 +223,7 @@
 		</div>
 		
         <button onclick='btnregister()'>Submit</button>
+        <p style="padding-top: 10px;text-align: center;">Already have an account?  <b><a style="text-decoration:none;" href="login.jsp"> Login now</a></b></p>
       </form>
     </section>
   </body>

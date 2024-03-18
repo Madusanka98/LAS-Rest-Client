@@ -149,13 +149,14 @@
             </ul>
         </nav> 
         <div class="content w-full">
+            <h2 class="text-center mt-4">Appointment Prescription Manage</h2>
             <section class="p-3">
                 <!--<div class="row">
                     <div class="col-12">
                         <button class="btn btn-primary newUser" onclick="getTechnician(0)" data-bs-toggle="modal" data-bs-target="#userForm">New User <i class="bi bi-people"></i></button>
                     </div>
                 </div>-->
-                <div style="overflow-x: auto; padding-bottom: 30px;" class="table table-responsive-md">
+                <div style="padding-top: 25px;overflow-x: auto;padding-bottom: 30px;" class="table table-responsive-md">
                     <table class="table table-striped table-hover mt-3 text-center table-bordered" style="border-collapse: collapse;" id="example">
                         <thead>
                             <tr>

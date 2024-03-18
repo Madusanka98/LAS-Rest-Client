@@ -150,14 +150,16 @@
                 </div>
             </ul>
         </nav>  
+        
         <div class="content w-full">
+            <h2 class="text-center mt-4">Manage Technician</h2>
             <section class="p-3">
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-primary newUser" onclick="getTechnician(0)" data-bs-toggle="modal" data-bs-target="#userForm">New User <i class="bi bi-people"></i></button>
+                        <button class="btn btn-primary newUser" onclick="getTechnician(0)" data-bs-toggle="modal" data-bs-target="#userForm">New Technician <i class="bi bi-people"></i></button>
                     </div>
                 </div>
-                <div style="overflow-x: auto; padding-bottom: 30px;" class="table table-responsive-md">
+                <div style="padding-top: 25px;overflow-x: auto;padding-bottom: 30px;" auto; padding-bottom: 30px;" class="table table-responsive-md">
                     <table class="table table-striped table-hover mt-3 text-center table-bordered" style="border-collapse: collapse;" id="example">
                         <thead>
                             <tr>
@@ -294,7 +296,7 @@
                                                 <label for="name">Name:</label>
                                             </div>
                                             <div class="form-group  col-md-6">
-                                                <input class="form-control reqView" type="text" name="" id="showname" disabled>
+                                                <input class="form-control reqView" type="text" name="" id="showtname" disabled>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -641,7 +643,7 @@
                      .then(data => {
                         if (data !== null) {
                            document.querySelector("#showid").value = data.id;
-                           document.querySelector("#showname").value = data.name;
+                           document.querySelector("#showtname").value = data.name;
                            document.querySelector("#showage").value = data.age; 
                            document.querySelector("#showcity").value = data.city;
                            document.querySelector("#showemail").value = data.email;
