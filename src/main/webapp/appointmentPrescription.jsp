@@ -73,6 +73,13 @@
         .hidden {
           display: none;
         }
+        .viewOnlyPrescriptions{
+            border: none;
+            pointer-events: none;
+        }
+        .bgColorInput{
+            background-color: #e9ecef;
+        }
     </style>
 </head>
 <body>
@@ -200,7 +207,7 @@
                                 <button type="button" onclick="handleUpload()">Upload</button>-->
 
                                 <div class="inputField">
-                                    <div>
+                                    <div style="display: none">
                                         <label class="lbl" for="name">Id:</label>
                                         <input type="text" name="" id="id" disabled>
                                     </div>
@@ -260,50 +267,52 @@
                                 </div>
                                 <div class="inputField">
                                     <div>
-                                        <div>
-                                            <label class="lbl" for="aPId">Id:</label>
-                                            <input type="text" name="" id="aPId" disabled>
-                                        </div>
-                                        <div class="row">
-                                            <div>
-                                                <label class="lbl" for="testResults">Test Results:</label>
-                                                <textarea rows="4" class="form-control" name="" id="testResults" required></textarea>
+                                        <div id="viewPrescription">
+                                            <div style="display: none">
+                                                <label class="lbl" for="aPId">Id:</label>
+                                                <input type="text" name="" id="aPId" disabled>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div>
-                                                <label class="lbl" for="testTechnicians">Technicians:</label>
-                                                <textarea rows="2" class="form-control" name="" id="testTechnicians" required></textarea>
+                                            <div class="row">
+                                                <div>
+                                                    <label class="lbl" for="testResults"><span style="color:red;">*</span>&nbsp;Test Results:</label>
+                                                    <textarea rows="4" class="form-control" name="" id="testResults" required></textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div>
-                                                <label class="lbl" for="comment">Comment:</label>
-                                                <textarea rows="6" class="form-control"  name="" id="testComment" required></textarea>
+                                            <div class="row">
+                                                <div>
+                                                    <label class="lbl" for="testTechnicians"><span style="color:red;">*</span>&nbsp;Technicians:</label>
+                                                    <textarea rows="2" class="form-control" name="" id="testTechnicians" required></textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                        
-                                        <!--<div class="input-group">
-                                            <div class="custom-file"> 
-                                              <input type="file" multiple accept=".pdf, .docx, .jpg, .png, .jpeg" class="custom-file-input" >
-                                              <label class="custom-file-label" for="inputGroupFile04">Choose files</label>
+                                            <div class="row">
+                                                <div>
+                                                    <label class="lbl" for="comment"><span style="color:red;">*</span>&nbsp;Comment:</label>
+                                                    <textarea rows="6" class="form-control"  name="" id="testComment" required></textarea>
+                                                </div>
                                             </div>
-                                            <div class="input-group-append">
-                                              <button class="btn btn-outline-secondary" id="filePrescriptionInput" type="button">Button</button>
-                                            </div>
-                                          </div>-->
-                                        <div class="row lbl">
-                                            <div class="form-group col-md-6">
-                                                <input class="form-control" type="file" id="filePrescriptionInput" multiple accept=".pdf, .docx, .jpg, .png, .jpeg">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <button class="btn btn-outline-secondary" onclick="uploadPrescriptionDocuments()">Upload Documents</button>
+
+                                            <!--<div class="input-group">
+                                                <div class="custom-file"> 
+                                                  <input type="file" multiple accept=".pdf, .docx, .jpg, .png, .jpeg" class="custom-file-input" >
+                                                  <label class="custom-file-label" for="inputGroupFile04">Choose files</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                  <button class="btn btn-outline-secondary" id="filePrescriptionInput" type="button">Button</button>
+                                                </div>
+                                              </div>-->
+                                            <div id="uplodDocView" class="row lbl">
+                                                <div class="form-group col-md-6">
+                                                    <input class="form-control" type="file" id="filePrescriptionInput" multiple accept=".pdf, .docx, .jpg, .png, .jpeg">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <button class="btn btn-outline-secondary" onclick="uploadPrescriptionDocuments()">Upload Documents<span style="color:red;">*</span>&nbsp;</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <table id="PrescriptiondocumentTable">
                                             <tr>
                                                 <th>Document Name</th>
-                                                <th>Actions</th>
+                                                <th id="viewTable">Actions</th>
                                             </tr>
                                         </table>
                                     </div>
@@ -319,148 +328,7 @@
                 </div>
             </div>
             <!--Read Data Modal-->
-            <div class="modal fade" id="readData">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <h4 class="modal-title">Appointment</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <form action="#" id="myForm">
-
-                                <div class="inputField">
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <b><label for="name">Id:</label></b>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="lblView" type="text" name="" id="showid" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="name">Preferred Date:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showpreferredDate" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="age">Preferred Time:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showpreferredTime" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="city">Appointment Type:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showappointmentType" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="email">Referred Doctor:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showreferredDoctor" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="phone">Reason for Appointment:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showappointmentReason"  disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="post">Emergency Contact:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showemgContactPer" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group  col-md-3">
-                                            <label for="sDate">Emergency Contact number:</label>
-                                        </div>
-                                        <div class="form-group  col-md-9">
-                                            <input class="form-control reqView" id="showemgMobileNum" disabled>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h4>Documents</h4>
-                                        <table id="documentTableView">
-                                            <tr>
-                                                <th>Document Name</th>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="inputField">
-                                    <div>
-                                        <div>
-                                            <label class="lbl" for="showaPId">Id:</label>
-                                            <input type="text" name="" id="aPId" disabled>
-                                        </div>
-                                        <div class="row">
-                                            <div>
-                                                <label class="lbl" for="showtestResults">Test Results:</label>
-                                                <textarea rows="4" class="form-control" name="" id="showtestResults" disabled></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div>
-                                                <label class="lbl" for="showtestTechnicians">Technicians:</label>
-                                                <textarea rows="2" class="form-control" name="" id="showtestTechnicians" disabled></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div>
-                                                <label class="lbl" for="showcomment">Comment:</label>
-                                                <textarea rows="6" class="form-control"  name="" id="showtestComment" disabled></textarea>
-                                            </div>
-                                        </div>
-                                        
-                                        <!--<div class="input-group">
-                                            <div class="custom-file"> 
-                                              <input type="file" multiple accept=".pdf, .docx, .jpg, .png, .jpeg" class="custom-file-input" >
-                                              <label class="custom-file-label" for="inputGroupFile04">Choose files</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                              <button class="btn btn-outline-secondary" id="filePrescriptionInput" type="button">Button</button>
-                                            </div>
-                                          </div>-->
-                                        <div class="row lbl">
-                                            <div class="form-group col-md-6">
-                                                <input class="form-control" type="file" id="filePrescriptionInput" multiple accept=".pdf, .docx, .jpg, .png, .jpeg" >
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <button class="btn btn-outline-secondary" onclick="uploadPrescriptionDocuments()">Upload Documents</button>
-                                            </div>
-                                        </div>
-                                        <table id="PrescriptiondocumentTable">
-                                            <tr>
-                                                <th>Document Name</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <!-- Option 1: Bootstrap Bundle with Popper -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -518,8 +386,8 @@
                     { 
                         data: "appointmentType", "render": 
                         function (data, type, row) {
-                            appointmentType = row['appointmentType'];
-                            return row['appointmentType'];
+                            appointmentType = row.testingType.name;
+                            return appointmentType;
                         }                                                                                                                                                                                                                                                       
                     },
                     { data: "referredDoctor", "render": 
@@ -562,9 +430,7 @@
                     { 
                         data: "id", "render": function (data, type, row) {
                             debugger;
-                            return '<button class="btn btn btn-warning" onclick="getTechnician(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#userForm"><i class="fa fa-list-alt"></i></button>\n\
-                    \n\
-                            <button class="btn btn-success" onclick="getTechnicianView(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>';
+                            return '<button class="btn btn btn-warning" onclick="getTechnician(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#userForm"><i class="fa fa-list-alt"></i></button>';
                         }    
                     }
                     // Add more columns as needed
@@ -610,8 +476,8 @@
                     { 
                         data: "appointmentType", "render": 
                         function (data, type, row) {
-                            appointmentType = row['appointmentType'];
-                            return row['appointmentType'];
+                            appointmentType = row.testingType.name;
+                            return appointmentType;
                         }                                                                                                                                                                                                                                                       
                     },
                     { data: "referredDoctor", "render": 
@@ -655,13 +521,8 @@
                         data: "id", "render": function (data, type, row) {
                             debugger;
                             
-                            if (parsedUserData.userType == 3) {
-                                return '<button class="btn btn-success" onclick="getTechnicianView(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>';
-                            }else{
-                            return '<button id="ispatient" class="btn btn btn-warning" onclick="getTechnician(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#userForm"><i class="fa fa-list-alt"></i></button>\n\
-                    \n\
-                            <button class="btn btn-success" onclick="getTechnicianView(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>';
-                        }  }  
+                            return '<button id="ispatient" class="btn btn btn-warning" onclick="getTechnician(' + row['id'] + ')" data-bs-toggle="modal" data-bs-target="#userForm"><i class="fa fa-list-alt"></i></button>';
+                          }  
                     }
                     // Add more columns as needed
                 ]
@@ -692,7 +553,6 @@
               document.getElementById("technician").classList.add('hidden');
           }
           else if(parsedUserData.userType == 1){
-              
               document.getElementById("appointment").style.display = 'none';
           }
           else{
@@ -837,8 +697,15 @@
                                             if (data.approintmentDocList.length > 0) {
                                                 //const files = data.approintmentDocList;
                                                 // reader = new FileReader();
-                                                uploadedPrescriptionDocuments = data.approintmentDocList;
-                                                displayPrescriptionDocuments();
+                                                var savedUserData = getCookie("authCookie");
+                                                if (savedUserData) {
+                                                    var parsedUserData = JSON.parse(savedUserData);
+                                                    uploadedPrescriptionDocuments = data.approintmentDocList;
+                                                    if(parsedUserData.userType == 3){
+                                                        displayPatientPrescriptionDocuments();
+                                                    }else
+                                                    displayPrescriptionDocuments();
+                                                }
                                             }else
                                                 document.getElementById("PrescriptiondocumentTable").innerHTML = "";
                                         } else {
@@ -880,87 +747,88 @@
             };
             
             const getTechnicianView = (id)=>{
-                uploadedDocuments = [];
                 try {
+                    const content = document.getElementById('content');
                     const options = {
-                    method : "GET"
+                        method : "GET"
                     };
                     debugger;
                     fetch(url + id, options)
-                     .then(res => res.json())
-                     .then(data => {
+                    .then(res => res.json())
+                    .then(data => {
                         if (data !== null) {
-                           document.querySelector("#showid").value = data.id;
-                           document.querySelector("#showpreferredDate").value = data.preferredDate;
-                           document.querySelector("#showpreferredTime").value = data.preferredTime; 
-                           document.querySelector("#showappointmentType").value = data.appointmentType;
-                           document.querySelector("#showreferredDoctor").value = data.referredDoctor;
-                           document.querySelector("#showappointmentReason").value = data.appointmentReason;
-                           document.querySelector("#showemgContactPer").value = data.emgContactPer;
-                           document.querySelector("#showemgMobileNum").value = data.emgMobileNum;
-                           document.querySelector("#showemgMobileNum").value = data.emgMobileNum;
-                           
+                            //isEdit=true;
+                            //const content = document.getElementById('content');
+                            //content.style.display = 'block';
+                            document.querySelector("#showid").value = data.id;
+                            document.querySelector("#showpreferredDate").value = data.preferredDate;
+                            document.querySelector("#showpreferredTime").value = data.preferredTime; 
+                            document.querySelector("#showappointmentType").value = data.testingType.name;
+                            document.querySelector("#showreferredDoctor").value = data.referredDoctor;
+                            document.querySelector("#showappointmentReason").value = data.appointmentReason;
+                            document.querySelector("#showemgContactPer").value = data.emgContactPer;
+                            document.querySelector("#showemgMobileNum").value = data.emgMobileNum;
                             if (data.approintmentDocList.length > 0) {
                                 //const files = data.approintmentDocList;
                                 // reader = new FileReader();
                                 uploadedDocuments = data.approintmentDocList;
-                                displayDocumentsView();
-                                //reader.readAsDataURL(file);
+                                displayDocuments();
                             }else
-                                //$(documentTableView).remove();
                                 document.getElementById("documentTableView").innerHTML = "";
-                            
+                            ///////
                             const options = {
-                                    method : "GET"
-                                };
-                                debugger;
-                                fetch(url2 + data.id, options)
-                                .then(res => res.json())
-                                .then(data1 => {
-                                    if(data1.id != 0){
-                                        if (data1 !== null) {
-                                            //isEdit=true;
-                                            //document.querySelector("#showaPId").value = data.id;
-                                            document.querySelector("#showtestResults").value = data1.testResults;
-                                            document.querySelector("#showtestTechnicians").value = data1.technicians; 
-                                            document.querySelector("#showtestComment").value = data1.comment;
-                                            
-                                            
-                                            if (data.approintmentDocList.length > 0) {
-                                                //const files = data.approintmentDocList;
-                                                // reader = new FileReader();
-                                                uploadedPrescriptionDocuments = data.approintmentDocList;
-                                                displayPrescriptionDocuments();
-                                            }else
-                                                document.getElementById("PrescriptiondocumentTable").innerHTML = "";
-                                            
-                                            
-                                        } else {
-                                            alert("Not found");
-                                        }
-                                    }else{
-                                        document.querySelector("#aPId").value = "";
-                                        document.querySelector("#testResults").value = "";
-                                        document.querySelector("#testTechnicians").value = ""; 
-                                        document.querySelector("#testComment").value = "";
-                                        document.getElementById("PrescriptiondocumentTable").innerHTML = "";
+                                method : "GET"
+                            };
+                            debugger;
+                            fetch(url2 + data.id, options)
+                            .then(res => res.json())
+                            .then(data => {
+                                if(data.id != 0){
+                                    if (data !== null) {
+                                        //isEdit=true;
+                                        document.querySelector("#showaPId").value = data.id;
+                                        document.querySelector("#showtestResults").value = data.testResults;
+                                        document.querySelector("#showtestTechnicians").value = data.technicians; 
+                                        document.querySelector("#showtestComment").value = data.comment;
+                                        if (data.approintmentDocList.length > 0) {
+                                            //const files = data.approintmentDocList;
+                                            // reader = new FileReader();
+                                            uploadedPrescriptionDocuments = data.approintmentDocList;
+                                            displayPrescriptionDocuments();
+                                        }else
+                                            document.getElementById("PrescriptiondocumentTable").innerHTML = "";
+                                    } else {
+                                        alert("Not found");
                                     }
-                                    
-                                });
-                           //document.querySelector("#showattachment").value = data.attachment;
-                           //document.querySelector("#showimage").value = data.image;
-                           //var img = document.querySelector("#showimage");
-                           //var base64Image = data.image; // Replace with your actual base64 string
-                            // Get the image element by id
-                            //var imageElement = document.getElementById("showimage");
+                                }else{
+                                    document.querySelector("#aPId").value = "";
+                                    document.querySelector("#testResults").value = "";
+                                    document.querySelector("#testTechnicians").value = ""; 
+                                    document.querySelector("#testComment").value = "";
+                                    document.getElementById("PrescriptiondocumentTable").innerHTML = "";
+                                }
+
+                            });
+
+
+                            //document.querySelector("#attachment").value = data.attachment;
+                            //document.querySelector("#showimage").value = data.image;
+                            //var img = document.querySelector("#showimage");
+                            //var base64Image = data.image; // Replace with your actual base64 string
+                             // Get the image element by id
+                             //var imageElement = document.getElementById("updateimage");
+                             // Set the src attribute with the base64 image string
+                             //imageElement.src = base64Image;
+                             //var imageElement1 = document.getElementById("imagePreview");
                             // Set the src attribute with the base64 image string
-                            //imageElement.src = base64Image;
+                            //imageElement1.src = "";
                         } else {
                             alert("Not found");
                         }
+                    });
 
-                     });
                 } catch (error) {
+                    // Code to handle the exception
                     console.error('An error occurred:', error);
                 }
             };
@@ -979,7 +847,7 @@
                             "technicians" :  document.getElementById("testTechnicians").value,
                             "comment" : document.getElementById("testComment").value,
                             "appointmentId" : document.getElementById("id").value,
-                            "tId" : savedUserData.id,
+                            "tId" : parsedUserData.id,
                             "approintmentDocList" : uploadedPrescriptionDocuments
                         };
                         debugger;
@@ -1011,7 +879,7 @@
                             "technicians" :  document.getElementById("testTechnicians").value,
                             "comment" : document.getElementById("testComment").value,
                             "appointmentId" : document.getElementById("id").value,
-                            "tId" : savedUserData.id,
+                            "tId" : parsedUserData.id,
                             "approintmentDocList" : uploadedPrescriptionDocuments
                             //"attachment" : document.getElementById("attachment").value
                         };
@@ -1121,6 +989,7 @@
         }
 
         function deleteDocument(index) {
+            debugger;   
             if(uploadedDocuments[index].active == 1 && uploadedDocuments[index].id != undefined){
                 uploadedDocuments[index].active = 0;
             }else
@@ -1184,12 +1053,11 @@
                     const row = table.insertRow(-1);
                     const nameCell = row.insertCell(0);
                     const actionsCell = row.insertCell(1);
-
                     const downloadLink = document.createElement('a');
                     downloadLink.href = "#";
                     downloadLink.textContent = documentPrescriptionData.fileName;
                     downloadLink.setAttribute('data-index', index);
-                    downloadLink.addEventListener('click', downloadDocument);
+                    downloadLink.addEventListener('click', downloadPrescriptionDocument);
 
                     nameCell.appendChild(downloadLink);
 
@@ -1203,6 +1071,41 @@
                 }
             });
         }
+        
+        function displayPatientPrescriptionDocuments() {
+            const table = document.getElementById('PrescriptiondocumentTable');
+
+            // Clear existing rows
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            // Populate the table with uploaded documents
+            uploadedPrescriptionDocuments.forEach((documentPrescriptionData, index) => {
+                debugger;
+                if(documentPrescriptionData.active !=0){
+                    const row = table.insertRow(-1);
+                    const nameCell = row.insertCell(0);
+                    const actionsCell = row.insertCell(1);
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = "#";
+                    downloadLink.textContent = documentPrescriptionData.fileName;
+                    downloadLink.setAttribute('data-index', index);
+                    downloadLink.addEventListener('click', downloadPrescriptionDocument);
+
+                    nameCell.appendChild(downloadLink);
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.onclick = function () {
+                        deletePrescriptionDocument(index);
+                    };
+                    deleteButton.style.display = 'none';
+                    actionsCell.appendChild(deleteButton);
+                }
+            });
+        }
+        
         
         function displayPrescriptionDocumentsView() {
             document.getElementById("PrescriptiondocumentTableView").innerHTML = "";
@@ -1224,6 +1127,7 @@
         }
 
         function deletePrescriptionDocument(index) {
+            debugger;
             if(uploadedPrescriptionDocuments[index].active == 1 && uploadedPrescriptionDocuments[index].id != undefined){
                 uploadedPrescriptionDocuments[index].active = 0;
             }else
@@ -1232,8 +1136,9 @@
         }
 
         function downloadPrescriptionDocument(event) {
+            debugger;
             const index = event.target.getAttribute('data-index');
-            const documenPrescriptiontData = uploadedPrescriptionDocuments[index];
+            const documentPrescriptionData = uploadedPrescriptionDocuments[index];
             const blob = base64ToBlob(documentPrescriptionData.document, documentPrescriptionData.fileType);
             const url = URL.createObjectURL(blob);
 

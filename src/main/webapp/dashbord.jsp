@@ -159,8 +159,8 @@
                 </div>
                 <div id="logOut">
                 <li>
-                    <a href="#">
-                        <i class="fa fa-power-off" aria-hidden="true"></i>
+                    <a href="login.jsp">
+                        <i class="fa fa-power-off" onclick="deleteCookie('authCookie'); aria-hidden="true"></i>
                         <span class="nav-font">Logout</span>
                     </a>
                 </li>
@@ -245,19 +245,19 @@
           
           if(parsedUserData.userType == 3){
               
-              document.getElementById("appointmentPrescription").style.display = 'none';
+              //document.getElementById("appointmentPrescription").style.display = 'none';
               document.getElementById("technician").classList.add('hidden');
-              document.getElementById("appointmentReport").classList.add('hidden');  
-            //logOut
-          }else if(parsedUserData.userType == 2){
+              document.getElementById("appointmentReport").classList.add('hidden');
+          }
+          else if(parsedUserData.userType == 2){
               
               document.getElementById("appointment").style.display = 'none';
               document.getElementById("technician").classList.add('hidden');
           }
           else if(parsedUserData.userType == 1){
-              
               document.getElementById("appointment").style.display = 'none';
-          }else{
+          }
+          else{
               document.getElementById("dashboard").style.display = 'none';
               document.getElementById("technician").classList.add('hidden');
               document.getElementById("appointment").classList.add('hidden'); 
@@ -317,7 +317,10 @@
 
 
     };
-    
+    function deleteCookie(name) {
+        debugger;
+        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
      // Dummy data for the pie chart
     const appointmentData = {
       labels: ['Pending', 'Completed', 'Canceled'],

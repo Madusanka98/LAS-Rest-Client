@@ -199,7 +199,7 @@
                                 <div class="row">
                                     <center>
                                         <div class="form-group">
-                                            <label class="lbl" id="imageLabel" for="imageInput">
+                                            <label class="lbl" id="imageLabel" for="imageInput"><span style="color:red;">*</span>&nbsp;
                                                 Click here to upload profile pic<br>
                                                 <input class="form-control" type="file" id="imageInput" onclick="handleUpload()" style="display:none">
                                             </label>
@@ -220,41 +220,41 @@
                                 <button type="button" onclick="handleUpload()">Upload</button>-->
 
                                 <div class="inputField">
-                                    <div>
+                                    <div  style="display: none">
                                         <label class="lbl" for="name">Id:</label>
                                         <input type="text" name="" id="id" disabled>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                          <label class="lbl" for="inputEmail4">Name:</label>
+                                          <label class="lbl" for="inputEmail4"><span style="color:red;">*</span>&nbsp;Name:</label>
                                           <input class="form-control" type="text" name="" id="name" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="lbl" for="inputEmail4">Age:</label>
+                                            <label class="lbl" for="inputEmail4"><span style="color:red;">*</span>&nbsp;Age:</label>
                                             <input class="form-control" type="number" name="" id="age" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="lbl" for="post">Address:</label>
+                                        <label class="lbl" for="post"><span style="color:red;">*</span>&nbsp;Address:</label>
                                         <input type="text"class="form-control" name="" id="address" required>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                          <label class="lbl" for="city">City:</label>
+                                          <label class="lbl" for="city"><span style="color:red;">*</span>&nbsp;City:</label>
                                           <input type="text"class="form-control" name="" id="city" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="lbl" for="email">E-mail:</label>
+                                            <label class="lbl" for="email"><span style="color:red;">*</span>&nbsp;E-mail:</label>
                                             <input class= "form-control" name="" id="email" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label class="lbl" for="phone">Number:</label>
+                                            <label class="lbl" for="phone"><span style="color:red;">*</span>&nbsp;Telephone Number:</label>
                                             <input type="text"class="form-control" type="email" name="" id="mobileNum" minlength="11" maxlength="11" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="lbl" for="sDate">Start Date:</label>
+                                            <label class="lbl" for="sDate"><span style="color:red;">*</span>&nbsp;Start Date:</label>
                                             <input type="date" class="form-control" name="" id="startDate" required>
                                         </div>
                                     </div>
@@ -493,7 +493,6 @@
               document.getElementById("technician").classList.add('hidden');
           }
           else if(parsedUserData.userType == 1){
-              
               document.getElementById("appointment").style.display = 'none';
           }
           else{

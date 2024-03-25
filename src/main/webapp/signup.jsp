@@ -123,7 +123,8 @@
                                 location.reload();
                                 //throw new Error(`HTTP error! Status: ${response.status}`);
                             }else{
-                                alert("Registration successfully !");
+                                alert("Registration successfully ! \n The login credentials are available in the email, please check the email.");
+                                window.location.href = "login.jsp";
                                 location.reload();
                             }
                             return response.json();
@@ -174,27 +175,27 @@
       <header>Registration Form</header>
       <form action="#" class="form">
         <div class="input-box">
-          <label>Full Name</label>
+          <label><span style="color:red;">*</span>&nbsp;Full Name</label>
           <input type="text" placeholder="Enter full name" id="name" required />
         </div>
 
         <div class="input-box">
-          <label>Email Address</label>
+          <label><span style="color:red;">*</span>&nbsp;Email Address</label>
           <input type="text" placeholder="Enter email address" id="email" required />
         </div>
 
         <div class="column">
           <div class="input-box">
-            <label>Phone Number</label>
+            <label><span style="color:red;">*</span>&nbsp;Phone Number</label>
             <input type="number" placeholder="Enter phone number" id="mobileNum" required />
           </div>
           <div class="input-box">
-            <label>Birth Date</label>
+            <label><span style="color:red;">*</span>&nbsp;Birth Date</label>
             <input type="date" placeholder="Enter birth date" id="dob" required />
           </div>
         </div>
         <div class="gender-box">
-          <h3>Gender</h3>
+          <h3><span style="color:red;">*</span>&nbsp;Gender</h3>
           <div class="gender-option">
             <div class="gender">
               <input type="radio" id="check-male" name="gender" value="1" checked />
@@ -211,11 +212,11 @@
           </div>
         </div>
         <div class="input-box address">
-          <label>Address</label>
+          <label><span style="color:red;">*</span>&nbsp;Address</label>
           <input type="text" placeholder="Enter street address" id="address" required />
         </div>
 		<div class="input-box">
-			<label id="imageLabel" for="imageInput">
+			<label id="imageLabel" for="imageInput"><span style="color:red;">*</span>&nbsp;
 				Click here to upload profile image<br>
 				<input type="file" id="imageInput" onclick="handleUpload()" style="display:none">
 			</label>

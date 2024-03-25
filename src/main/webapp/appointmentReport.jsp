@@ -177,11 +177,33 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label class="lbl" for="filter3">Preferred Time:</label>
-                        <input class="form-control" type="text" id="preferredDate">
+                        <select class="form-control" id="preferredTime">
+                            <option value="">Select Preferred Time</option>
+                            <option value="8.00 am - 8.30 am">8.00 am - 8.30 am</option>
+                            <option value="8.30 am - 9.00 am">8.30 am - 9.00 am</option>
+                            <option value="9.00 am - 9.30 am">9.00 am - 9.30 am</option>
+                            <option value="9.30 am - 10.00 a">9.30 am - 10.00 am</option>
+                            <option value="10.00 am - 10.30 am">10.00 am - 10.30 am</option>
+                            <option value="10.30 am - 11.00 am">10.30 am - 11.00 am</option>
+                            <option value="11.00 am - 11.30 am">11.00 am - 11.30 am</option>
+                            <option value="11.30 am - 12.00 pm">11.30 am - 12.00 pm</option>
+                            <option value="12.00 pm - 12.30 pm">12.00 pm - 12.30 pm</option>
+                            <option value="12.30 pm - 1.00 pm">12.30 pm - 1.00 pm</option>
+                            <option value="1.00 pm - 1.30 pm">1.00 pm - 1.30 pm</option>
+                            <option value="1.30 pm - 2.00 pm">1.30 pm - 2.00 pm</option>
+                            <option value="2.00 pm - 2.30 pm">2.00 pm - 2.30 pm</option>
+                            <option value="2.30 pm - 3.00 pm">2.30 pm - 3.00 pm</option>
+                            <option value="3.00 pm - 3.30 pm">3.00 pm - 3.30 pm</option>
+                            <option value="3.30 pm - 4.00 pm">3.30 pm - 4.00 pm</option>
+                            <option value="4.00 pm - 4.30 pm">4.00 pm - 4.30 pm</option>
+                            <option value="4.30 pm - 5.00 pm">4.30 pm - 5.00 pm</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="lbl" for="filter3">Appointment Type:</label>
-                        <input class="form-control"  type="text" id="appointmentType">
+                        <select class="form-control" id="appointmentType">
+                            <option value="">Select Appointment Type</option>
+                        </select>
                     </div>
                 </div>
                 <center style="padding-top: 10px;">
@@ -248,24 +270,26 @@
                 debugger;
                 var createDateTime = $('#createDateTime').val();
                 var preferredDate = $('#preferredDate').val();
-                var preferredDate = $('#preferredDate').val();
-                var appointmentType = $('#appointmentType').val();
+                var preferredTime = document.getElementById("preferredTime").value;
+                var appointmentType = document.getElementById("appointmentType").value;
 
                 // Apply filters to DataTable
                 //var sSate = document.getElementById("startDate").value;
                 var date = moment(createDateTime).format('MMM D, YYYY');
                 var date2 = moment(preferredDate).format('MMM D, YYYY');
                 if(createDateTime!=""){
-                    dataTable.columns(0).search(createDateTime).draw();
+                    dataTable.columns(0).search(date).draw();
                 }if(preferredDate!=""){
-                    dataTable.columns(1).search(preferredDate).draw();
-                }if(preferredDate!=""){
-                    dataTable.columns(2).search(preferredDate).draw();
+                    dataTable.columns(1).search(date2).draw();
+                }if(preferredTime!=""){
+                    dataTable.columns(2).search(preferredTime).draw();
                 }if(appointmentType!=""){
                     dataTable.columns(3).search(appointmentType).draw();
                 }
             });
         });
+        
+        
         
     const url3 = "http://localhost:8080/LAS-Rest-Service/resources/login/";
       
@@ -289,7 +313,6 @@
               document.getElementById("technician").classList.add('hidden');
           }
           else if(parsedUserData.userType == 1){
-              
               document.getElementById("appointment").style.display = 'none';
           }
           else{
@@ -343,6 +366,7 @@
                      var imageElement = document.getElementById("profileImage");
                      // Set the src attribute with the base64 image string
                      imageElement.src = base64Image;
+                     getAppointmentUserId ();
                      
                 } else {
                     alert("Not found");
@@ -356,6 +380,31 @@
 
 
     };
+    const url12 = "http://localhost:8080/LAS-Rest-Service/resources/testingType/";
+    function getAppointmentUserId (){
+        try {
+            const options = {
+            method : "GET"
+            };
+            debugger;
+            fetch(url12 , options)
+             .then(res => res.json())
+             .then(data => {
+                 typeOfTesting = data;
+                 const dropdown = document.getElementById('appointmentType');
+                 if (data !== null) {
+                    data.forEach(testingType => {
+                        const option = document.createElement('option');
+                        option.value = testingType.name; // Assuming 'id' is the property representing the value
+                        option.text = testingType.name; // Assuming 'name' is the property representing the display text
+                        dropdown.add(option);
+                      });
+                }
+            });
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    }
         
     </script>
 </body>

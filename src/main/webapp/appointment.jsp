@@ -220,23 +220,40 @@
 
                             <form action="#" id="myForm">
                                 <div class="inputField">
-                                    <div>
+                                    <div style="display: none;">
                                         <label for="name">Id:</label>
                                         <input type="text" name="" id="id" disabled>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                           <div>
-                                              <label class="lbl" for="name">Preferred Date:</label>
-                                              <input class="form-control" type="date" name="" id="preferredDate" required>
+                                              <label class="lbl" for="name"><span style="color:red;">*</span>&nbsp;Preferred Date:</label>
+                                              <input class="form-control" type="date" name="" id="preferredDate">
                                           </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <div>
-                                                <label class="lbl" for="age">Preferred Time:</label>
-                                                <!--<input class="form-control" type="text" name="" id="preferredTime" required>-->
+                                                <label class="lbl" for="age"><span style="color:red;">*</span>&nbsp;Preferred Time:</label>
                                                 <select class="form-control" id="timeSlotsDropdown">
-                                                    <!-- Dropdown options will be populated here -->
+                                                    <option value="">Select Preferred Time</option>
+                                                    <option value="8.00 am - 8.30 am">8.00 am - 8.30 am</option>
+                                                    <option value="8.30 am - 9.00 am">8.30 am - 9.00 am</option>
+                                                    <option value="9.00 am - 9.30 am">9.00 am - 9.30 am</option>
+                                                    <option value="9.30 am - 10.00 a">9.30 am - 10.00 am</option>
+                                                    <option value="10.00 am - 10.30 am">10.00 am - 10.30 am</option>
+                                                    <option value="10.30 am - 11.00 am">10.30 am - 11.00 am</option>
+                                                    <option value="11.00 am - 11.30 am">11.00 am - 11.30 am</option>
+                                                    <option value="11.30 am - 12.00 pm">11.30 am - 12.00 pm</option>
+                                                    <option value="12.00 pm - 12.30 pm">12.00 pm - 12.30 pm</option>
+                                                    <option value="12.30 pm - 1.00 pm">12.30 pm - 1.00 pm</option>
+                                                    <option value="1.00 pm - 1.30 pm">1.00 pm - 1.30 pm</option>
+                                                    <option value="1.30 pm - 2.00 pm">1.30 pm - 2.00 pm</option>
+                                                    <option value="2.00 pm - 2.30 pm">2.00 pm - 2.30 pm</option>
+                                                    <option value="2.30 pm - 3.00 pm">2.30 pm - 3.00 pm</option>
+                                                    <option value="3.00 pm - 3.30 pm">3.00 pm - 3.30 pm</option>
+                                                    <option value="3.30 pm - 4.00 pm">3.30 pm - 4.00 pm</option>
+                                                    <option value="4.00 pm - 4.30 pm">4.00 pm - 4.30 pm</option>
+                                                    <option value="4.30 pm - 5.00 pm">4.30 pm - 5.00 pm</option>
                                                   </select>
                                                 <span style="display: none" id="selectedTimeSlot"></span>
                                             </div>
@@ -244,35 +261,35 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label class="lbl" for="city">Appointment Type:</label>
+                                            <label class="lbl" for="city"><span style="color:red;">*</span>&nbsp;Appointment Type:</label>
                                             <select class="form-control" id="testingTypes">
-                                                <option>Select Type</option>
+                                                <option value="">Select Appointment Type</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="lbl" for="city">Referred Doctor:</label>
-                                            <input  class="form-control" type="text" name="" id="referredDoctor" required>
+                                            <input  class="form-control" type="text" name="" id="referredDoctor" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="lbl" for="city">Reason for Appointment:</label>
-                                        <input class="form-control" type="text" name="" id="appointmentReason" required>
+                                        <input class="form-control" type="text" name="" id="appointmentReason" >
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="lbl" for="email">Emergency Contact:</label>
-                                            <input class="form-control" type="text" name="" id="emgContactPer" required>
+                                            <input class="form-control" type="text" name="" id="emgContactPer" >
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="lbl" for="phone">Emergency Contact number:</label>
-                                            <input class="form-control" type="text" name="" id="emgMobileNum" minlength="11" maxlength="11" required>
+                                            <input class="form-control" type="text" name="" id="emgMobileNum" minlength="11" maxlength="11" >
                                         </div>
                                     </div>
                                     <!--<div>
                                         <label for="post">Attachment:</label>
                                         <input type="file" name="" id="attachment" required>
                                     </div>-->
-                                    <div class="row lbl">
+                                    <!--<div class="row lbl">
                                         <div class="form-group col-md-6">
                                             <input  class="form-control" type="file" id="fileInput" multiple accept=".pdf, .docx, .jpg, .png, .jpeg">
                                         </div>
@@ -285,8 +302,26 @@
                                             <th>Document Name</th>
                                             <th>Actions</th>
                                         </tr>
-                                    </table>
-                                    
+                                    </table>-->
+                                    <div class="row lbl">
+                                        <div class="form-group col-md-6">
+                                            <label for="files">Upload Documents:</label><br>
+                                            <input class="form-control" type="file" id="files" name="files[]" accept=".pdf,.docx,.png,.jpg,.jpeg" multiple>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input style="margin-top: 23px;" type="button" class="btn btn-outline-secondary" value="Upload Documents" onclick="uploadDocuments()"><br><br>
+                                        </div>
+                                    </div>
+                                    <table class="document-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Document Name</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="documentList">
+                                        </tbody>
+                                    </table><br><br>
                                 </div>
 
                             </form>
@@ -297,28 +332,39 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <!--<button id='btnAddTechnician' onclick='addTechnician()' class="btn btn-primary submit">Submit</button>-->
-                            <button class="btn btn-primary newUser" onclick="gotoPayment()" data-bs-toggle="modal" data-bs-target="#paymentForm">Payment <i class="bi bi-people"></i></button>
+                            <button class="btn btn-primary newUser" onclick="gotoPayment()" data-bs-toggle="modal" >Payment <i class="bi bi-people"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Modal Form-->
-            <div class="modal fade" id="paymentForm">
+            <!--Payment Form-->
+            <div class="modal fade" id="paymentForm" >
                 <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content ">
                         <div class="modal-header">
                             <h4 class="modal-title">Payment Form</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="payment-container">
+                            <div class="payment-container" style="background-image: url('image/background.jpg');">
+                                <h2 class="text-center mt-4">ATM Card Payment</h2>
+                                          <image class="mx-auto d-block" style="margin-left: 143px;padding-left: 50px;max-width: 50%;height: auto;" src="image/cardPayment.jpg">
                                 <!--<h1>Lab Appointment Payment</h1>-->
                                 <form id="paymentForm">
+                                    <p>The total amount you have to pay&nbsp;RS:<input type="text" id="aPrice" style="border: none;width: 40px;pointer-events: none;">/=</p>
                                     <div class="row">
                                         <center>
                                             <div class="form-group col-md-8">
                                                 <label class="labelPay" for="cardNumber">Card Number:</label>
                                                 <input class="inputPay" type="textPay" id="cardNumber" placeholder="**** **** **** ****" required>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="row">
+                                        <center>
+                                            <div class="form-group col-md-8">
+                                                <label class="labelPay" for="cardNumber">Card Holder Name:</label>
+                                                <input class="inputPay" type="textPay" id="cardNumber" placeholder="Enter Card Holder Name" required>
                                             </div>
                                         </center>
                                     </div>
@@ -365,10 +411,10 @@
 
                                 <div class="inputField">
                                     <div class="row">
-                                        <div class="form-group  col-md-3">
+                                        <div class="form-group  col-md-3" style="display: none;">
                                             <b><label for="name">Id:</label></b>
                                         </div>
-                                        <div class="form-group  col-md-9">
+                                        <div class="form-group  col-md-9"  style="display: none;">
                                             <input class="lblView" type="text" name="" id="showid" disabled>
                                         </div>
                                     </div>
@@ -712,41 +758,7 @@
             }
     });
     
-    document.addEventListener("DOMContentLoaded", function() {
-        var dropdown = document.getElementById("timeSlotsDropdown");
-        var selectedTimeSlotDisplay = document.getElementById("selectedTimeSlot");
-
-        // Populate the dropdown with time slots
-        var startTime = 8; // Start time in 24-hour format (8 am)
-        var endTime = 18; // End time in 24-hour format (6 pm)
-
-        for (var hour = startTime; hour < endTime; hour++) {
-          for (var minute = 0; minute < 60; minute += 30) {
-            var am_pm = hour < 12 ? "am" : "pm";
-            var displayHour = (hour % 12 === 0) ? 12 : hour % 12;
-            var displayMinute = minute === 0 ? "00" : minute;
-            var timeSlot = displayHour + "." + displayMinute + " " + am_pm + " - ";
-
-            var nextHour = hour + Math.floor((minute + 30) / 60);
-            var nextMinute = (minute + 30) % 60;
-            var next_am_pm = nextHour < 12 ? "am" : "pm";
-            var nextDisplayHour = (nextHour % 12 === 0) ? 12 : nextHour % 12;
-            var nextDisplayMinute = nextMinute === 0 ? "00" : nextMinute;
-            timeSlot += nextDisplayHour + "." + nextDisplayMinute + " " + next_am_pm;
-
-            var option = document.createElement("option");
-            option.text = timeSlot;
-            option.value = timeSlot;
-            dropdown.add(option);
-          }
-        }
-
-        // Event listener to get the selected value
-        dropdown.addEventListener("change", function() {
-          var selectedValue = dropdown.value;
-          selectedTimeSlotDisplay.textContent = selectedValue;
-        });
-      });
+    
     
     const url3 = "http://localhost:8080/LAS-Rest-Service/resources/login/";
       //getPrefixData();
@@ -774,7 +786,6 @@
               document.getElementById("technician").classList.add('hidden');
           }
           else if(parsedUserData.userType == 1){
-              
               document.getElementById("appointment").style.display = 'none';
           }
           else{
@@ -983,11 +994,13 @@
                         //var input = document.getElementById('attachment');
                         var pDate = document.getElementById("preferredDate").value;
                         var date = moment(pDate).format('MMM DD, YYYY');
+                        var dropdown = document.getElementById("timeSlotsDropdown");
+                        var selectedValue = dropdown.options[dropdown.selectedIndex].value;
                         const person ={
                             "id" : id,
                             "preferredDate" : date,
-                            "preferredTime" : dropdown.value,
-                            "appointmentType" :  document.getElementById("testingTypes").value,
+                            "preferredTime" : selectedValue,
+                            "appointmentType" :  document.getElementById("timeSlotsDropdown").value,
                             "referredDoctor" : document.getElementById("referredDoctor").value,
                             "appointmentReason" : document.getElementById("appointmentReason").value,
                             "emgContactPer" : document.getElementById("emgContactPer").value,
@@ -1005,11 +1018,15 @@
                         };
 
                         fetch(url+id, options).then(response => {
-                            if (!response.ok) {
-                                alert("Failed to update technician. Please try again.");
+                            if (response.ok) {
+                                alert("Update appointment successfully");
                                 location.reload();
-                            }else{
-                                alert("Update technician successfully");
+                            }else if (response.statusText === "Bad Request"){
+                                alert("Selected timeslot not available. please choose another time-slot.");
+                                location.reload();
+                            }
+                            else{
+                                alert("Failed to update appointment. Please try again.");
                                 location.reload();
                             }
                             return response.json();
@@ -1021,15 +1038,16 @@
                             var savedUserData = getCookie("authCookie");
                             if (savedUserData) {
                                 var parsedUserData = JSON.parse(savedUserData);
-                                alert('Payment Successful!');
                                 var pDate = document.getElementById("preferredDate").value;
                                 var date = moment(pDate).format('MMM DD, YYYY');
+                                var dropdown = document.getElementById("timeSlotsDropdown");
+                                var selectedValue = dropdown.options[dropdown.selectedIndex].value;
                                 debugger; 
                                 const person ={
                                       
                                     //"id" : document.getElementById("id").value,
                                     "preferredDate" : date,
-                                    "preferredTime" : document.getElementById("selectedTimeSlot").value,
+                                    "preferredTime" : selectedValue,
                                     "appointmentType" :  document.getElementById("testingTypes").value,
                                     "referredDoctor" : document.getElementById("referredDoctor").value,
                                     "appointmentReason" : document.getElementById("appointmentReason").value,
@@ -1048,12 +1066,17 @@
                                    body : JSON.stringify(person)
                                 };
                                 fetch(url, options).then(response => {
-                                    if (!response.ok) {
-                                        alert("Failed to add technician. Please try again.");
+                                    if (response.ok) {
+                                        alert('Payment Successful!');
+                                        alert("Add appointment successfully");
                                         location.reload();
-                                        //throw new Error(`HTTP error! Status: ${response.status}`);
-                                    }else{
-                                        alert("Add technician successfully !");
+                                    }
+                                    else if (response.statusText === "Bad Request"){
+                                        alert("Selected timeslot not available. please choose another time-slot.");
+                                        location.reload();
+                                    }
+                                    else{
+                                        alert("Failed to add appointment. Please try again.");
                                         location.reload();
                                     }
                                     return response.json();
@@ -1100,11 +1123,11 @@
                     fetch(url + index, options).then(response => {
                         debugger;
                         if (!response.ok) {
-                            alert("Failed to delete technician. Please try again.");
+                            alert("Failed to delete appointment. Please try again.");
                             location.reload();
                             //throw new Error(`HTTP error! Status: ${response.status}`);
                         }else{
-                            alert("Delete technician successfully !");
+                            alert("Delete appointment successfully !");
                             location.reload();
                         }
                         return response.json();
@@ -1148,10 +1171,77 @@
             //    img = atob(base64Data);
                 //img = Uint8Array.from(atob(base64Data), c => c.charCodeAt(0));
             //}
-            
+            function gotoPayment() {
+                debugger;
+                
+                if (document.getElementById("testingTypes").value != "" && document.getElementById("preferredDate").value != "" && document.getElementById("timeSlotsDropdown").value != "") {
+                  // If validation passes, show the payment form modal
+                    for (var i = 0; i < typeOfTesting.length; i++) {
+                      if (typeOfTesting[i].id == document.getElementById("testingTypes").value) {
+                         document.getElementById("aPrice").value = typeOfTesting[i].price; // Returns the object containing the value
+                      }
+                    }
+                    
+                  $('#paymentForm').modal('show');
+                } else {
+                  // If validation fails, handle it accordingly
+                  // For example, redirect the user to the login page
+                  alert("Please enter all required details.");
+                  //$('#paymentForm').modal('close');
+                }
+              }
             let uploadedDocuments = [];
-
         function uploadDocuments() {
+            const files = document.getElementById('files').files;
+            const documentList = document.getElementById('documentList');
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.size > 2000000) {
+                    alert('File size exceeds 2MB limit: ' + file.name);
+                    continue;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const documentData = event.target.result;
+                    const documentObj = {
+                        fileName: file.name,
+                        fileType: file.type,
+                        document: documentData.split(',')[1]
+                    };
+                    uploadedDocuments.push(documentObj);
+
+                    const tr = document.createElement('tr');
+                    const tdName = document.createElement('td');
+                    const downloadLink = document.createElement('a');
+                    downloadLink.textContent = file.name;
+                    downloadLink.href = documentData;
+                    downloadLink.download = file.name;
+                    downloadLink.onclick = function(event) {
+                        event.preventDefault(); // Prevent default action of link
+                        downloadFile(documentData, file.name); // Trigger file download
+                    };
+                    tdName.appendChild(downloadLink);
+                    tr.appendChild(tdName);
+
+                    const tdAction = document.createElement('td');
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', function() {
+                        tr.remove();
+                        // Remove document from uploadedDocuments array
+                        uploadedDocuments = uploadedDocuments.filter(doc => doc.fileName !== file.name);
+                    });
+                    tdAction.appendChild(deleteButton);
+                    tr.appendChild(tdAction);
+
+                    documentList.appendChild(tr);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        /*function uploadDocuments() {
             const fileInput = document.getElementById('fileInput');
             const files = fileInput.files;
 
@@ -1164,8 +1254,9 @@
                         fileName: file.name,
                         fileType: file.type,
                         document: e.target.result.split(',')[1] // store document as base64
+                        
                     };
-
+                    e.preventDefault();
                     uploadedDocuments.push(documentData);
                     displayDocuments();
                 };
@@ -1174,7 +1265,7 @@
             }
 
             fileInput.value = ''; // clear the file input
-        }
+        }*/
 
         function displayDocuments() {
             const table = document.getElementById('documentTable');
@@ -1250,6 +1341,14 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+        }
+        function downloadFile(data, name) {
+            const link = document.createElement('a');
+            link.href = data;
+            link.download = name;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function base64ToBlob(base64, contentType) {
